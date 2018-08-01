@@ -7,7 +7,7 @@
   // seem very useful, but remember it--if a function needs to provide an
   // iterator when the user does not pass one in, this will be handy.
   _.identity = function(val) {
-      return val;
+    return val;
   };
 
   /**
@@ -38,7 +38,7 @@
   // Like first, but for the last elements. If n is undefined, return just the
   // last element.
   _.last = function(array, n) {
-    return n === undefined ? array[array.length-1] : array.slice(Math.max(array.length-n,0), array.length);
+    return n === undefined ? array[array.length - 1] : array.slice(Math.max(array.length - n, 0), array.length);
   };
 
   // Call iterator(value, key, collection) for each element of collection.
@@ -50,7 +50,7 @@
     if (Array.isArray(collection)) {
       var arr = [];
       for (var i = 0; i < collection.length; i++) {
-      arr.push(iterator(collection[i], i, collection));
+        arr.push(iterator(collection[i], i, collection));
       }  
     } else {
       var arr = [];
@@ -84,10 +84,10 @@
   _.filter = function(collection, test) {
     var arr = [];
     _.each(collection, function (item, index) {
-      if ( test(item) ){
+      if ( test(item) ) {
         arr.push(item);
       }    
-    })
+    });
 
     return arr;
   };
@@ -95,8 +95,8 @@
   // Return all elements of an array that don't pass a truth test.
   _.reject = function(collection, test) {
     
-    var reverseTest = function(a,b,c,d){
-    return !test(a,b,c,d);
+    var reverseTest = function(a, b, c, d) {
+      return !test(a, b, c, d);
     };
   
     return _.filter(collection, reverseTest);
@@ -113,22 +113,22 @@
     //   if () {}
     // }
     if (iterator !== undefined) {
-      for (var i = 0; i < array.length ; i ++) {
+      for (var i = 0; i < array.length; i ++) {
         trans.push(iterator(array[i]));
       }
-      for (var i = 0 ; i < trans.length; i++ ) {
-        if ( seen.indexOf(trans[i]) < 0  ) {
+      for (var i = 0; i < trans.length; i++ ) {
+        if ( seen.indexOf(trans[i]) < 0) {
           seen.push(trans[i]);
           arr.push(array[i]);
         }
       }
-    return arr;
+      return arr;
     }
-      for (var i = 0 ; i < array.length; i++ ) {
-        if (arr.indexOf(array[i]) < 0  ) {
-          arr.push(array[i]);
-        }
+    for (var i = 0; i < array.length; i++ ) {
+      if (arr.indexOf(array[i]) < 0) {
+        arr.push(array[i]);
       }
+    }
     return arr;
   };
 
@@ -138,10 +138,10 @@
     // map() is a useful primitive iteration function that works a lot
     // like each(), but in addition to running the operation on all
     // the members, it also maintains an array of results.
-      if (Array.isArray(collection)) {
+    if (Array.isArray(collection)) {
       var arr = [];
       for (var i = 0; i < collection.length; i++) {
-      arr.push(iterator(collection[i], i, collection));
+        arr.push(iterator(collection[i], i, collection));
       }  
     } else {
       var arr = [];
@@ -195,42 +195,37 @@
   _.reduce = function(collection, iterator, accumulator) {
     var res;
     
-    if (iterator === undefined ){ 
+    if (iterator === undefined ) { 
       return collection[0];
-      } else if (iterator.length === 1) {
-       return collection[0];
-      } else {
-      
-//       var memo = accumulator || 0;
-      
-      // memo + accumulator           iterator(accumulator, collection[0])
-
+    } else if (iterator.length === 1) {
+      return collection[0];
+    } else {
       if (accumulator || accumulator === 0 || accumulator === false) {
-         var memo = iterator(accumulator, collection[0])
+        var memo = iterator(accumulator, collection[0]);
       } else {
         var memo = collection[0];
       }
 
       for (var i = 1; i < collection.length; i++) {
-        memo = iterator(memo, collection[i])
+        memo = iterator(memo, collection[i]);
       }
       console.log(memo);
       return memo;
     }    
               
   };
-//////// part 1
+  ////// part 1
   // Determine if the array or object contains a given value (using `===`).
   _.contains = function(collection, target) {
     // TIP: Many iteration problems can be most easily expressed in
     // terms of reduce(). Here's a freebie to demonstrate!
-    if (!Array.isArray(collection)){
-    var arr = [];
-    for (key in collection) {
+    if (!Array.isArray(collection)) {
+      var arr = [];
+      for (key in collection) {
         var key = key;
         arr.push(collection[key]);
       }
-    collection =arr;
+      collection = arr;
     }    
 
     return _.reduce(collection, function(wasFound, item) {
@@ -248,17 +243,17 @@
     iterator = iterator || _.identity;
 
 
-    if (Array.isArray(collection) && collection.length ===0 ){
+    if (Array.isArray(collection) && collection.length === 0 ) {
       return true;
     }
     // TIP: Try re-using reduce() here.
-    var res = _.reduce(collection, function(test,ele){
+    var res = _.reduce(collection, function(test, ele) {
       if (test) {
         return !!iterator(ele);
       } else {
         return false;
       }
-      }, true)
+    }, true);
     return res;
   };
 
@@ -269,17 +264,17 @@
     iterator = iterator || _.identity;
 
 
-    if (Array.isArray(collection) && collection.length ===0 ){
+    if (Array.isArray(collection) && collection.length === 0 ) {
       return false;
     }
     // TIP: Try re-using reduce() here.
-    var res = _.reduce(collection, function(test,ele){
+    var res = _.reduce(collection, function(test, ele) {
       if (test) {
         return true;
       } else {
-        return !!iterator(ele);;
+        return !!iterator(ele);
       }
-      }, false)
+    }, false);
     return res;
   
   };
@@ -316,9 +311,10 @@
   // exists in obj
   _.defaults = function(obj) {
     _.each(arguments, function(ele) {
-    _.each(ele, function(value, key) {
-      if (obj[key] === undefined) {
-      obj[key] = value;}
+      _.each(ele, function(value, key) {
+        if (obj[key] === undefined) {
+          obj[key] = value;
+        }
       });
     });
     return obj;
@@ -367,11 +363,11 @@
   _.memoize = function(func) {
     var seenList = {};
     return function() {
-    var arg = JSON.stringify(arguments);
-    if (!seenList.hasOwnProperty(arg) ) {
-      seenList[arg] = func.apply(null, arguments);
-    }
-    return seenList[arg];
+      var arg = JSON.stringify(arguments);
+      if (!seenList.hasOwnProperty(arg) ) {
+        seenList[arg] = func.apply(null, arguments);
+      }
+      return seenList[arg];
     };
   };
 
@@ -405,10 +401,10 @@
     var index;
     var temp;
     for (var i = 0; i < array.length; i++) {
-    index = Math.floor(Math.random()*(array.length-1));
+      index = Math.floor(Math.random() * (array.length - 1));
       temp = result[i];
-      result[i] = result[index]
-      result[index] = temp
+      result[i] = result[index];
+      result[index] = temp;
     }
     return result;
   };

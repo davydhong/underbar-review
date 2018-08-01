@@ -58,7 +58,7 @@
       it('should return false given an array and a value not in that array', function() {
         // Replace this line with an `expect` statement that tests
         // the behavior described by the `it` string
-        var array = [1,2,3];
+        var array = [1, 2, 3];
         var value = 4;
         expect(_.contains(array, value)).to.be.false;
       });
@@ -151,7 +151,7 @@
       it('should fail for a set containing no matching values', function() {
         // Replace this line with an `expect` statement that tests
         // the behavior described by the `it` string
-        expect(_.some([1,3,5], isEven)).to.be.false;
+        expect(_.some([1, 3, 5], isEven)).to.be.false;
       });
 
       it('should pass for a collection containing one matching value', function() {
@@ -194,7 +194,7 @@
         var destination = {a: 'a'};
         var source = { a: 'b' };
         var extended = _.extend(destination, source);
-        expect(extended.a).to.equal('b')
+        expect(extended.a).to.equal('b');
       });
 
       it('should not override properties not found in the source', function() {
